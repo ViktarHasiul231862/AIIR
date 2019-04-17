@@ -1,0 +1,135 @@
+
+{% load static %}
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<!-- Images by various sources under the Creative Commons CC0 license and/or the Creative Commons Zero license.
+Although you can use them, for a more unique website, replace these images with your own. -->
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Fractality</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom Fonts from Google -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+      function btn_engage() {
+          $.ajax({
+              type: "POST",
+              url: './params/',
+              data:
+                  {
+                      firstParam: $('#parameter1').val(),
+                      secondParam: $('#parameter2').val(),
+                      thirdParam: $('#parameter3').val()
+                  }
+          });
+      }
+
+      function btn_reset() {
+          $.ajax({
+              type: "POST",
+              url: './reset/'
+          });
+      }
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                	<span class="glyphicon glyphicon-fire"></span>
+                	Fractality
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+	<!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Fractality</h1>
+				<div class="image-content">
+					<div style="display:block" class="image-parameters">
+						<h2> Fractal parameters </h2>
+						<label for="parameter1">Parameter 1:</label>
+						<input type="text" id="parameter1" name="parameter1" size="10">
+						<label for="parameter1">Parameter 2:</label>
+						<input type="text" id="parameter2" name="parameter2" size="10">
+						<label for="parameter1">Parameter 3:</label>
+						<input type="text" id="parameter3" name="parameter3" size="10">
+						</div>
+					<div class="image-itself">
+						<img src="../../static/images/fractal_square.jpg?{{ imageTime }}" width="430" height="430">
+					</div>
+					<div class="clusters-cont">
+						<h2> Clusters </h2>
+						<progress id="cluster1" value="22" max="100"></progress>
+						<progress id="cluster2" value="50" max="100"></progress>
+					</div>
+				</div>
+                <button class="btn btn-primary btn-lg" onclick="btn_engage()">Engage Now</button>
+                <button class="btn btn-primary btn-lg" onclick="btn_reset()">Reset</button>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>

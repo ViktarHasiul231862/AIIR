@@ -1,3 +1,5 @@
+The default branch is called "develop". Clone url of this git project, create your own new branch and write your code there. When you finished and everything works fine merge your branch to "develop". Every 2-4 weeks develop will be merged to master in case everything works fine.
+
 Install last django and virtual environment(pip install django, pip install virtualenv)
 
 Try to run django server:
