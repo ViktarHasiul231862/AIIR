@@ -1,5 +1,6 @@
 from random import randint
-
+import time
+from threading import Thread
 from PIL import Image
 from django.shortcuts import render
 from rest_framework.decorators import api_view
@@ -66,3 +67,18 @@ def reset(request):
     print(data)
     client.close()
     return Response(status=status.HTTP_200_OK)
+
+
+progress = 0
+@api_view(['GET'])
+def start_count(request):
+    for x in range(101):
+        global progress
+        progress = x
+        time.sleep(.300)
+
+@api_view(['GET'])
+def progress_bar(request):
+    global progress
+    print(progress)
+    return Response(progress, status.HTTP_200_OK)

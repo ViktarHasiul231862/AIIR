@@ -52,6 +52,24 @@ Although you can use them, for a more unique website, replace these images with 
               url: './reset/'
           });
       }
+
+      setInterval(function() {
+          $.ajax({
+              type: "GET",
+              url: './progress',
+              success: function(data) {
+                document.getElementById("progressBar").value = data;
+              }
+              });
+
+      }, 2000);
+
+      window.onload = function() {
+          $.ajax({
+              type: "GET",
+              url: './start'
+          });
+      }
     </script>
 </head>
 
@@ -104,9 +122,8 @@ Although you can use them, for a more unique website, replace these images with 
 						<img src="../../static/images/fractal_square.jpg?{{ imageTime }}" width="430" height="430">
 					</div>
 					<div class="clusters-cont">
-						<h2> Clusters </h2>
-						<progress id="cluster1" value="22" max="100"></progress>
-						<progress id="cluster2" value="50" max="100"></progress>
+						<h2> Cluster </h2>
+						<progress id="progressBar" value="0" max="100"></progress>
 					</div>
 				</div>
                 <button class="btn btn-primary btn-lg" onclick="btn_engage()">Engage Now</button>
