@@ -23,6 +23,15 @@ def setParams (request):
     print(request.data['secondParam']) #liczba iter
     print(request.data['thirdParam']) #czwiartka
 
+    #Use data from clusters instead of "counter" variable
+    #Put this into place, where this data can be recieved
+    for counter in range(101):
+        global progress1
+        global progress2
+        progress1 = counter
+        progress2 = counter
+        time.sleep(.1)
+
     host = '192.168.0.105'
     port = 22
 
@@ -69,22 +78,6 @@ def reset(request):
 
 progress1 = 0
 progress2 = 0
-@api_view(['GET'])
-def start_count1(request):
-    for x in range(101):
-        global progress1
-        progress1 = x
-        time.sleep(.1)
-    return Response(status.HTTP_200_OK)
-
-@api_view(['GET'])
-def start_count2(request):
-    for x in range(101):
-        global progress2
-        progress2 = x
-        time.sleep(.15)
-    return Response(status.HTTP_200_OK)
-
 
 @api_view(['GET'])
 def progress_bar(request):
