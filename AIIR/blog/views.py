@@ -10,8 +10,7 @@ import paramiko
 
 
 def home(request):
-    context = {"imageTime": randint(100, 32000000)}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html')
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -50,8 +49,7 @@ def setParams (request):
     bg = Image.new('RGB', image.size, (255, 255, 255))
     bg.paste(image, (0, 0), image)
     bg.save("./blog/static/images/fractal_square.jpg", quality=95)
-    context = {"imageTime": randint(100, 32000000)}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html')
 
 @api_view(['POST'])
 def reset(request):
@@ -69,16 +67,28 @@ def reset(request):
     return Response(status=status.HTTP_200_OK)
 
 
-progress = 0
+progress1 = 0
+progress2 = 0
 @api_view(['GET'])
-def start_count(request):
+def start_count1(request):
     for x in range(101):
-        global progress
-        progress = x
-        time.sleep(.300)
+        global progress1
+        progress1 = x
+        time.sleep(.1)
+    return Response(status.HTTP_200_OK)
+
+@api_view(['GET'])
+def start_count2(request):
+    for x in range(101):
+        global progress2
+        progress2 = x
+        time.sleep(.15)
+    return Response(status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 def progress_bar(request):
-    global progress
-    print(progress)
-    return Response(progress, status.HTTP_200_OK)
+    global progress1
+    global progress2
+    data = [float(progress1), float(progress2)]
+    return Response(data, status.HTTP_200_OK)

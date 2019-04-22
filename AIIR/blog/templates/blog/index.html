@@ -33,6 +33,7 @@ Although you can use them, for a more unique website, replace these images with 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
+	var isRunning = false;
       function btn_engage() {
           $.ajax({
               type: "POST",
@@ -44,7 +45,31 @@ Although you can use them, for a more unique website, replace these images with 
                       thirdParam: $('#parameter3').val()
                   }
           });
+		  
+		  if(isRunning)
+		  {
+			return;
+		  }
+		  
+		  document.getElementById("progressBar1").value = 0;
+		  document.getElementById("progressBar2").value = 0;
+		  
+		  isRunning = true;
+		  
+		  $.ajax({
+              type: "GET",
+              url: './start1'
+			});
+			
+		  $.ajax({
+              type: "GET",
+              url: './start2'
+			});
+					
       }
+	  
+		var intervalListener = self.setInterval(function () {someProcess()}, 1000);
+	  
 
       function btn_reset() {
           $.ajax({
@@ -52,24 +77,26 @@ Although you can use them, for a more unique website, replace these images with 
               url: './reset/'
           });
       }
-
-      setInterval(function() {
-          $.ajax({
-              type: "GET",
-              url: './progress',
-              success: function(data) {
-                document.getElementById("progressBar").value = data;
-              }
-              });
-
-      }, 2000);
-
-      window.onload = function() {
-          $.ajax({
-              type: "GET",
-              url: './start'
-          });
-      }
+	  
+	  function someProcess() {
+			if(isRunning)
+			{
+			  $.ajax({
+					  type: "GET",
+					  url: './progress',
+					  success: function(data) {
+						document.getElementById("progressBar1").value = data[0];
+						document.getElementById("progressBar2").value = data[1];
+					  }
+					  });
+				  if(document.getElementById("progressBar1").value == 100 && document.getElementById("progressBar2").value == 100)
+				  {
+					isRunning=false;
+					var myImageElement = document.getElementById('fractalImage');
+					myImageElement.src = "../../static/images/fractal_square.jpg?rand=" + Math.random();
+				  }
+			  }
+		}
     </script>
 </head>
 
@@ -119,11 +146,12 @@ Although you can use them, for a more unique website, replace these images with 
 						<input type="text" id="parameter3" name="parameter3" size="10">
 						</div>
 					<div class="image-itself">
-						<img src="../../static/images/fractal_square.jpg?{{ imageTime }}" width="430" height="430">
+						<img src="../../static/images/fractal_square.jpg" width="430" height="430" id="fractalImage">
 					</div>
 					<div class="clusters-cont">
 						<h2> Cluster </h2>
-						<progress id="progressBar" value="0" max="100"></progress>
+						<progress id="progressBar1" value="0" max="100"></progress>
+						<progress id="progressBar2" value="0" max="100"></progress>
 					</div>
 				</div>
                 <button class="btn btn-primary btn-lg" onclick="btn_engage()">Engage Now</button>
