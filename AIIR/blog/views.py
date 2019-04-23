@@ -79,9 +79,37 @@ def reset(request):
 progress1 = 0
 progress2 = 0
 
+@api_view(['POST'])
+def login(request):
+    print(request)
+    host = '192.168.0.105'
+    port = 22
+
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(hostname=host, username="vm1", password="wlodek", port=port)
+    stdin, stdout, stderr = client.exec_command('SELECT * FROM user WHERE email = request.email AND password = request.password')
+    data = stdout.readlines()
+    print(data)
+    client.close()
+    return Response(status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def registration(request):
+    host = '192.168.0.105'
+    port = 22
+
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(hostname=host, username="vm1", password="wlodek", port=port)
+    client.exec_command('INSERT INTO user VALUES(request.name, request.surname, request.email, request.password,request.name,)')
+    client.close()
+    return Response(status=status.HTTP_200_OK)
+
 @api_view(['GET'])
 def progress_bar(request):
     global progress1
     global progress2
     data = [float(progress1), float(progress2)]
     return Response(data, status.HTTP_200_OK)
+
