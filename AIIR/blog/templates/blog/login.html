@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="styles/style.css" rel="stylesheet" type="text/css" />
-    <link href="fontello-2c7f4732\css\fontello.css" rel="stylesheet" type="text/css" />
+    <link href="styles/menu.css" rel="stylesheet" type="text/css" />
+    <link href="fontello-b51b9e18/css/fontello.css" rel="stylesheet" type="text/css" />
     <title>Fractality</title>
 </head>
-<body>       
+<body>
+    <div id="wrapper">
     <div class="grid-container">
         <div class="content">
             <div class="login">
                 <div class="logo">
-                    Logo
+                    <br/><br/>Fractality
                 </div>
                 <form method="post">
                     <input type="email" class="user-email" autofocus="true" required="true" placeholder="E-mail" />
@@ -26,7 +28,25 @@
         <div class="topBar"></div>
         <div class="footer"></div>
         <div class="sideBarR"></div>
-        <div class="menu"></div>
+        <input type="checkbox" id="menu" name="menu" class="menu-checkbox">
+            <div class="menu">
+                <label class="menu-toggle" for="menu"><span>Toggle</span></label>
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="demo-icon icon-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="demo-icon icon-tasks"></i>Task Manager</a>
+                    </li>
+                    <li>
+                        <a href="login.html"><i class="demo-icon icon-login"></i>Login</a>
+                    </li>
+                    <li>
+                        <a href="registration.html"><i class="demo-icon icon-edit"></i>Registration</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
