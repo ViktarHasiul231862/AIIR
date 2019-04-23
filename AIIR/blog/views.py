@@ -102,7 +102,7 @@ def registration(request):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname=host, username="vm1", password="wlodek", port=port)
-    client.exec_command('INSERT INTO user VALUES(request.name, request.surname, request.email, request.password,request.name,)')
+    client.exec_command('INSERT INTO user VALUES(request.name, request.surname, request.email, request.password,request.name)')
     client.close()
     return Response(status=status.HTTP_200_OK)
 

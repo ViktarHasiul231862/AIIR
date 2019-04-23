@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abe84374-a726-4fa1-8f6d-394436411111" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIIR/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
+            <state relative-caret-position="276">
+              <caret line="104" column="124" selection-start-line="104" selection-start-column="124" selection-end-line="104" selection-end-column="124" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#454#1927#0" />
@@ -65,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AIIR/blog/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="102">
+              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -114,8 +112,8 @@
         <option value="$PROJECT_DIR$/AIIR/blog/models.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/registration.html" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/index.html" />
-        <option value="$PROJECT_DIR$/AIIR/blog/views.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/urls.py" />
+        <option value="$PROJECT_DIR$/AIIR/blog/views.py" />
       </list>
     </option>
   </component>
@@ -174,12 +172,12 @@
       <workItem from="1555482263998" duration="1198000" />
       <workItem from="1555840929357" duration="1328000" />
       <workItem from="1555842710046" duration="3414000" />
-      <workItem from="1556046419622" duration="2461000" />
+      <workItem from="1556046419622" duration="2549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29719000" />
+    <option name="totallyTimeSpent" value="29807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -283,24 +281,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#454#1927#0" />
-            <element signature="e#2475#2606#0" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/urls.py">
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="276">
+          <caret line="104" column="124" selection-start-line="104" selection-start-column="124" selection-end-line="104" selection-end-column="124" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#454#1927#0" />
+            <element signature="e#2475#2606#0" />
           </folding>
         </state>
       </provider>
