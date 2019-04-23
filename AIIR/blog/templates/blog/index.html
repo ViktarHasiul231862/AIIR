@@ -33,25 +33,65 @@ Although you can use them, for a more unique website, replace these images with 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
-      function btn_engage() {
-          $.ajax({
-              type: "POST",
-              url: './params/',
-              data:
-                  {
-                      firstParam: $('#parameter1').val(),
-                      secondParam: $('#parameter2').val(),
-                      thirdParam: $('#parameter3').val()
-                  }
-          });
-      }
+		var isRunning = false;
+		var intervalListener = self.setInterval(function () {someProcess()}, 1000);	
+		window.clearInterval(intervalListener);
+	
+		function btn_engage() 
+		{
+		  if(isRunning)
+				return;
+		  $.ajax
+		  ({
+			  type: "POST",
+			  url: './params/',
+			  data:
+			  {
+				  firstParam: $('#parameter1').val(),
+				  secondParam: $('#parameter2').val(),
+				  thirdParam: $('#parameter3').val()
+			  }
+		  });
+			  
+		  document.getElementById("progressBar1").value = 0;
+		  document.getElementById("progressBar2").value = 0;
+		  
+		  isRunning = true;
+		  intervalListener = self.setInterval(function () {getProgressFromServer()}, 1000);
+				 
+		}
 
-      function btn_reset() {
-          $.ajax({
-              type: "POST",
-              url: './reset/'
-          });
-      }
+		function btn_reset() 
+		{
+		  $.ajax
+		  ({
+			  type: "POST",
+			  url: './reset/'
+		  });
+		}
+	  
+		function getProgressFromServer() 
+		{
+			if(isRunning)
+			{
+				$.ajax
+				({
+					type: "GET",
+					url: './progress',
+					success: function(data) 
+					{
+						document.getElementById("progressBar1").value = data[0];
+						document.getElementById("progressBar2").value = data[1];
+					}
+				});
+				if(document.getElementById("progressBar1").value == 100 && document.getElementById("progressBar2").value == 100)
+				{
+					isRunning=false;
+					document.getElementById('fractalImage').src = "../../static/images/fractal_square.jpg?rand=" + Math.random();
+					clearInterval(intervalListener);
+				}
+			}
+		}
     </script>
 </head>
 
@@ -92,21 +132,21 @@ Although you can use them, for a more unique website, replace these images with 
                 <h1>Fractality</h1>
 				<div class="image-content">
 					<div style="display:block" class="image-parameters">
-						<h2> Fractal parameters </h2>
-						<label for="parameter1">Parameter 1:</label>
+						<h2> Parameters </h2>
+						<label for="parameter1">Resolution:</label>
 						<input type="text" id="parameter1" name="parameter1" size="10">
-						<label for="parameter1">Parameter 2:</label>
+						<label for="parameter1">Number of iterations:</label>
 						<input type="text" id="parameter2" name="parameter2" size="10">
-						<label for="parameter1">Parameter 3:</label>
+						<label for="parameter1">Quarter:</label>
 						<input type="text" id="parameter3" name="parameter3" size="10">
 						</div>
 					<div class="image-itself">
-						<img src="../../static/images/fractal_square.jpg?{{ imageTime }}" width="430" height="430">
+						<img src="../../static/images/fractal_square.jpg" width="430" height="430" id="fractalImage">
 					</div>
 					<div class="clusters-cont">
-						<h2> Clusters </h2>
-						<progress id="cluster1" value="22" max="100"></progress>
-						<progress id="cluster2" value="50" max="100"></progress>
+						<h2> Nodes </h2>
+						<progress id="progressBar1" value="0" max="100"></progress>
+						<progress id="progressBar2" value="0" max="100"></progress>
 					</div>
 				</div>
                 <button class="btn btn-primary btn-lg" onclick="btn_engage()">Engage Now</button>

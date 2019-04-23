@@ -1,5 +1,6 @@
 from random import randint
-
+import time
+from threading import Thread
 from PIL import Image
 from django.shortcuts import render
 from rest_framework.decorators import api_view
@@ -9,8 +10,7 @@ import paramiko
 
 
 def home(request):
-    context = {"imageTime": randint(100, 32000000)}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html')
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -22,6 +22,15 @@ def setParams (request):
     print(request.data['firstParam'])  #rozdzielczosc
     print(request.data['secondParam']) #liczba iter
     print(request.data['thirdParam']) #czwiartka
+
+    #Use data from clusters instead of "counter" variable
+    #Put this into place, where this data can be recieved
+    for counter in range(101):
+        global progress1
+        global progress2
+        progress1 = counter
+        progress2 = counter
+        time.sleep(.1)
 
     host = '192.168.0.105'
     port = 22
@@ -49,8 +58,7 @@ def setParams (request):
     bg = Image.new('RGB', image.size, (255, 255, 255))
     bg.paste(image, (0, 0), image)
     bg.save("./blog/static/images/fractal_square.jpg", quality=95)
-    context = {"imageTime": randint(100, 32000000)}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html')
 
 @api_view(['POST'])
 def reset(request):
@@ -66,3 +74,14 @@ def reset(request):
     print(data)
     client.close()
     return Response(status=status.HTTP_200_OK)
+
+
+progress1 = 0
+progress2 = 0
+
+@api_view(['GET'])
+def progress_bar(request):
+    global progress1
+    global progress2
+    data = [float(progress1), float(progress2)]
+    return Response(data, status.HTTP_200_OK)
