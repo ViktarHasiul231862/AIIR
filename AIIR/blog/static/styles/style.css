@@ -3,7 +3,7 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 
 body {
-    background-image: url('../images/background.png');
+    background-image: url('../images/header.jpg');
     background-color: #cccccc;
     font-size: 12px;
     font-family: 'Open Sans';
@@ -46,6 +46,11 @@ button {
   padding: 10px;
 }
 
+progress {
+	width:300px;
+	margin-top: 15px;
+}
+
 a:link {
   text-decoration: none;
   color: white;
@@ -77,6 +82,24 @@ body,
   grid-template-columns: 0.3fr 3.2fr 0.4fr;
   grid-template-rows: 0.5fr 2.2fr 0.3fr;
   grid-template-areas: "menu topBar topBar" "menu content sideBarR" "menu footer footer";
+}
+
+.header { grid-area: header; min-height: 100px; margin-top: 50px; font-size: 30px;}
+.image-parameters { grid-area: imgparameters;}
+.image-itself { grid-area: imageitself; }
+.clusters-cont { grid-area: nodes;}
+.buttons-cont { grid-area: buttons;}
+
+.task-container{
+	display: grid;
+	text-align: center; 
+	color: white;
+	grid-gap: 10px;
+	grid-template-areas:
+    'header header header'
+    'imgparameters imageitself nodes'
+	'buttons buttons buttons';
+	grid-template-columns: 430px 430px 430px;
 }
 
 .content {

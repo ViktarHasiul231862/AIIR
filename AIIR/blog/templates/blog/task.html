@@ -1,9 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf=8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="../../static/styles/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="../../static/fontello-b51b9e18/css/fontello.css" rel="stylesheet" type="text/css" />
+    <title>Fractality</title>
+    <script>
+		var isRunning = false;
+		function btn_engage() 
+		{
+		  if(isRunning)
+				return;
+		  $.ajax
+		  ({
+			  type: "POST",
+			  url: './params/',
+			  data:
+			  {
+				  firstParam: $('#resolution').val(),
+				  secondParam: $('#iterations').val(),
+				  thirdParam: $('#quarter').val()
+			  }
+		  });
+			  
+		  document.getElementById("progressBar1").value = 0;
+		  document.getElementById("progressBar2").value = 0;
+		  document.getElementById("progressBar3").value = 0;
+		  
+		  isRunning = true;
+		  setInterval(function () {getProgressFromServer()}, 2000);
+		}
+
+		function btn_reset() 
+		{
+		  $.ajax
+		  ({
+			  type: "POST",
+			  url: './reset/'
+		  });
+		}
+	  
+		function getProgressFromServer() 
+		{
+			if(isRunning)
+			{
+				$.ajax
+				({
+					type: "GET",
+					url: './progress',
+					success: function(data) 
+					{
+						document.getElementById("progressBar1").value = data[0];
+						document.getElementById("progressBar2").value = data[1];
+						document.getElementById("progressBar3").value = data[2];
+					}
+				});
+				if(    $('#progressBar1').val() === 100
+                    && $('#progressBar2').val() === 100
+                    && $('#progressBar3').val() === 100 )
+				{
+					isRunning = false;
+					document.getElementById('fractalImage').src = "../../static/images/fractal_square.jpg";
+				}
+			}
+		}
+    </script>
 </head>
 <body>
-              
+	<div class="content">
+		<div class="task-container">
+			<div class="header">
+				<h1>Fractality<h1>
+			</div>
+			<div class="image-parameters">
+				<h2> Parameters </h2>
+				<input type="text" id="resolution" size="10" placeholder="Resolution">
+				<input type="text" id="iterations" size="10" placeholder="Number of iterations">
+				<input type="text" id="quarter" size="10" placeholder="Quarter">
+			</div>
+			<div class="image-itself">
+				<img src="../../static/images/fractal_square.jpg" width="430" height="430" id="fractalImage">
+			</div>
+			<div class="clusters-cont">
+				<h2> Nodes </h2>
+				<div class="progress-bars">
+				<ul>
+				<progress id="progressBar1" value="0" max="100"></progress>
+				</ul>
+				<ul>
+				<progress id="progressBar2" value="0" max="100"></progress>
+				</ul>
+				<ul>
+				<progress id="progressBar3" value="0" max="100"></progress>
+				</ul>
+				</div>
+			</div>
+			<div class="buttons-cont">
+				<button onclick="btn_engage()">Engage Now</button>
+				<button onclick="btn_reset()">Reset</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
