@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf=8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link href="../../static/styles/style.css" rel="stylesheet" type="text/css" />
+	<link href="../../static/styles/menu.css" rel="stylesheet" type="text/css" />
+	<link href="../../static/styles/task_manager.css" rel="stylesheet" type="text/css" />
+	<link href="../../static/fontello-b51b9e18/css/fontello.css" rel="stylesheet" type="text/css" />
+	<title>Fractality</title>
+  <script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $(function() {
+      $('#userTable').on('click', 'tbody tr', function(event) {
+        $(this).addClass('highlight').siblings().removeClass('highlight');
+      });
+
+      var getHighlightRow = function() {
+        return $('table > tbody > tr.highlight');
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+  <table id="userTable" class="row">
+    <tbody>
+      <tr style="background-color: #ffffff">
+        <th><b>Date</b></th>
+        <th><b>Resolution</b></th>
+        <th><b>Number of iterations</b></th>
+		<th><b>Quarter</b></th>
+		<th><b>Duration</b></th>
+      </tr>
+      <tr id="row1">
+        <td>01.05.2019</td>
+        <td>500</td>
+        <td>20</td>
+		<td>1</td>
+		<td>20s</td>
+      </tr>
+      <tr id="row2">
+        <td>02.05.2019</td>
+        <td>300</td>
+        <td>20</td>
+		<td>2</td>
+		<td>5s</td>
+      </tr>
+      <tr id="row3">
+        <td>30.04.2019</td>
+        <td>50120</td>
+        <td>2230</td>
+		<td>4</td>
+		<td>2220s</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
