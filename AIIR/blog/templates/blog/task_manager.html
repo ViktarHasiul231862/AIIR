@@ -42,71 +42,15 @@
 							<th><b>Quarter</b></th>
 							<th><b>Duration</b></th>
 							<th><b>Id</b></th>
-						</tr>
-							<tr id="row1">
-							<td>01.05.2019</td>
-							<td>500</td>
-							<td>20</td>
-							<td>1</td>
+			            {% for task in data %}
+                        <tr id="row1">
+							<td>0{{task.date}}</td>
+							<td>{{task.parameter1}}</td>
+							<td>{{task.parameter2}}</td>
+							<td>{{task.parameter3}}</td>
 							<td>20s</td>
-							<td>1</td>
-						</tr>
-						<tr id="row2">
-							<td>02.05.2019</td>
-							<td>300</td>
-							<td>20</td>
-							<td>2</td>
-							<td>5s</td>
-							<td>2</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
-						<tr id="row3">
-							<td>30.04.2019</td>
-							<td>50120</td>
-							<td>2230</td>
-							<td>4</td>
-							<td>2220s</td>
-							<td>3</td>
-						</tr>
+							<td>{{task.id}}</td>
+                        {% endfor %}
 					</tbody>
 				</table>
 			</div>
