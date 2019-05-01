@@ -22,42 +22,100 @@
       }
 
     });
+	
   </script>
 </head>
 
 <body>
-  <table id="userTable" class="row">
-    <tbody>
-      <tr style="background-color: #ffffff">
-        <th><b>Date</b></th>
-        <th><b>Resolution</b></th>
-        <th><b>Number of iterations</b></th>
-		<th><b>Quarter</b></th>
-		<th><b>Duration</b></th>
-      </tr>
-      <tr id="row1">
-        <td>01.05.2019</td>
-        <td>500</td>
-        <td>20</td>
-		<td>1</td>
-		<td>20s</td>
-      </tr>
-      <tr id="row2">
-        <td>02.05.2019</td>
-        <td>300</td>
-        <td>20</td>
-		<td>2</td>
-		<td>5s</td>
-      </tr>
-      <tr id="row3">
-        <td>30.04.2019</td>
-        <td>50120</td>
-        <td>2230</td>
-		<td>4</td>
-		<td>2220s</td>
-      </tr>
-    </tbody>
-  </table>
+	<div class="content">
+		<div class="list-container">
+			<div class="tasks-header">
+				History of fractals
+			<div>
+			<div class="task-table" style="overflow-y: auto;">
+				<table id="userTable" class="row" align="center" style="font-size: 20px">
+					<tbody>
+						<tr style="background-color: #ffffff; color: black;">
+							<th><b>Date</b></th>
+							<th><b>Resolution</b></th>
+							<th><b>Number of iterations</b></th>
+							<th><b>Quarter</b></th>
+							<th><b>Duration</b></th>
+							<th><b>Id</b></th>
+						</tr>
+							<tr id="row1">
+							<td>01.05.2019</td>
+							<td>500</td>
+							<td>20</td>
+							<td>1</td>
+							<td>20s</td>
+							<td>1</td>
+						</tr>
+						<tr id="row2">
+							<td>02.05.2019</td>
+							<td>300</td>
+							<td>20</td>
+							<td>2</td>
+							<td>5s</td>
+							<td>2</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+						<tr id="row3">
+							<td>30.04.2019</td>
+							<td>50120</td>
+							<td>2230</td>
+							<td>4</td>
+							<td>2220s</td>
+							<td>3</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="buttons-cont">
+				<button onclick="Upload()">Go to this fractal!</button>
+				<button onclick="go_to_new_task()">Generate new fractal!</button>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

@@ -102,6 +102,21 @@ body,
 	grid-template-columns: 430px 430px 430px;
 }
 
+.tasks-header { grid-area: tasks-header;  margin-top: 50px; font-size: 30px;}
+.task-table { grid-area: table-of-tasks;  margin-top: 20px; max-height: 500px;}
+.buttons-cont { grid-area: buttons;}
+
+.list-container{
+	display: grid;
+	text-align: center; 
+	color: white;
+	grid-gap: 10px;
+	grid-template-areas:
+    'tasks-header'
+    'table-of-tasks'
+	'buttons';
+}
+
 .content {
   grid-area: content;
   display: flex;
