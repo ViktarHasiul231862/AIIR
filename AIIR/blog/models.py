@@ -1,11 +1,5 @@
 from django.db import models
-
-
-class User(models.Model):
-    name = models.CharField(max_length=55)
-    surname = models.CharField(max_length=55)
-    email = models.EmailField()
-    password = models.TextField(max_length=30)
+from django.contrib.auth.models import User
 
 
 class Algorithm(models.Model):
@@ -21,5 +15,3 @@ class Request(models.Model):
     parameter1 = models.CharField(max_length=5)
     parameter2 = models.CharField(max_length=5)
     parameter3 = models.CharField(max_length=5)
-    parameter4 = models.CharField(max_length=5)
-    parameter5 = models.CharField(max_length=5)
