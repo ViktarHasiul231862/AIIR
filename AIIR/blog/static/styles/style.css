@@ -89,6 +89,7 @@ body,
 .image-itself { grid-area: imageitself; }
 .clusters-cont { grid-area: nodes;}
 .buttons-cont { grid-area: buttons;}
+.history-button { grid-area: historybutton; align:right; vertical-align: top; }
 
 .task-container{
 	display: grid;
@@ -96,7 +97,7 @@ body,
 	color: white;
 	grid-gap: 10px;
 	grid-template-areas:
-    'header header header'
+    'empty header historybutton'
     'imgparameters imageitself nodes'
 	'buttons buttons buttons';
 	grid-template-columns: 430px 430px 430px;

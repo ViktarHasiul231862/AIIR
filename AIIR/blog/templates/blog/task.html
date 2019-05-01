@@ -42,6 +42,15 @@
 			  url: './reset/'
 		  });
 		}
+		
+		function go-to-history()
+		{
+		  $.ajax
+		  ({
+			  type: "POST",
+			  url: './history/',
+		  });
+		}
 	  
 		function getProgressFromServer() 
 		{
@@ -74,6 +83,9 @@
 		<div class="task-container">
 			<div class="header">
 				<h1>Fractality<h1>
+			</div>
+			<div class="history-button">
+				<button onclick="go-to-history()">Go to history</button>
 			</div>
 			<div class="image-parameters">
 				<h2> Parameters </h2>
