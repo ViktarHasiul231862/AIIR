@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf=8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,20 +11,22 @@
 	<title>Fractality</title>
   <script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
-    $(function() {
-      $('#userTable').on('click', 'tbody tr', function(event) {
-        $(this).addClass('highlight').siblings().removeClass('highlight');
-      });
-
-      var getHighlightRow = function() {
-        return $('table > tbody > tr.highlight');
-      }
-
-    });
-	
+	   $(window).on('load', function clearUrl() {
+           window.history.pushState('', '', '/');
+           $('.invisible').hide();
+         });
+		$(function() {
+		  $('#taskTable').on('click', 'tbody tr', function(event) {
+			$(this).addClass('highlight').siblings().removeClass('highlight');
+			$('#task_id_input').val(getHighlightRowId());
+			console.log(getHighlightRowId())
+		  });
+		});
+	    function getHighlightRowId(){
+        return $('table > tbody > tr.highlight > td.id').html();
+        }
   </script>
 </head>
-
 <body>
 	<div class="content">
 		<div class="list-container">
@@ -33,7 +34,7 @@
 				History of fractals
 			<div>
 			<div class="task-table" style="overflow-y: auto;">
-				<table id="userTable" class="row" align="center" style="font-size: 20px">
+				<table id="taskTable" class="row" align="center" style="font-size: 20px">
 					<tbody>
 						<tr style="background-color: #ffffff; color: black;">
 							<th><b>Date</b></th>
@@ -43,20 +44,26 @@
 							<th><b>Duration</b></th>
 							<th><b>Id</b></th>
 			            {% for task in data %}
-                        <tr id="row1">
-							<td>0{{task.date}}</td>
+                        <tr id="row">
+							<td>{{task.date}}</td>
 							<td>{{task.parameter1}}</td>
 							<td>{{task.parameter2}}</td>
 							<td>{{task.parameter3}}</td>
 							<td>20s</td>
-							<td>{{task.id}}</td>
+							<td class="id">{{task.id}}</td>
                         {% endfor %}
 					</tbody>
 				</table>
 			</div>
 			<div class="buttons-cont">
-				<button onclick="Upload()">Go to this fractal!</button>
-				<button onclick="go_to_new_task()">Generate new fractal!</button>
+				<form method="get" action="task/">
+					<input name="task_id" class="invisible" id="task_id_input"/>
+					<input type="submit" value="Go to selected fractal"/>
+				</form>
+				<form method="get" action="task/">
+					<input name="task_id" class="invisible" value="0"/>
+					<input type="submit" value="Generate new fractal"/>
+				</form>
 			</div>
 		</div>
 	</div>

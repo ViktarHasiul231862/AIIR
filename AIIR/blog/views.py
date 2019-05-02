@@ -53,14 +53,13 @@ def login(request):
     return render(request, 'blog/login.html', {'msg': "email or password are invalid"})
 
 
+
 @api_view(['GET', 'POST'])
 def task_manager(request):
     if request.method == "GET":
         user = request.user
         print(request.user)
-        request_list = Request.objects.select_related().filter(user=user)
-
-        print(request_list)
+        data = Request.objects.select_related().filter(user=user)
         return Response(status=status.HTTP_200_OK)
     else:
         return render(request, 'blog/task.html')
@@ -136,9 +135,17 @@ def reset():
 
 
 @api_view(['GET'])
-def progress_bar(request):
+def progress_bar():
     global progress1
     global progress2
     global progress3
     data = [progress1 * 100, progress2 * 100, progress3 * 100]
     return Response(data, status.HTTP_200_OK)
+
+
+def task(request):
+    if request.GET['task_id'] is not '0':
+        t = Request.objects.get(id=request.GET['task_id'])
+        return render(request, 'blog/task.html', {'task': t})
+    else:
+        return render(request, 'blog/task.html', {'task': None})
