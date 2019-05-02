@@ -48,21 +48,17 @@ def login(request):
     user = authenticate(username=email, password=password)
     if user is not None:
         auth_login(request, user)
-        data = Request.objects.select_related().filter(user=user)
-        return render(request, 'blog/task_manager.html', {'data': data})
+        request.GET._mutable = True
+        request.GET['user_id'] = user.id
+        return task_manager(request._request)
     return render(request, 'blog/login.html', {'msg': "email or password are invalid"})
-
 
 
 @api_view(['GET', 'POST'])
 def task_manager(request):
-    if request.method == "GET":
-        user = request.user
-        print(request.user)
+        user = User.objects.get(id=request.GET['user_id'])
         data = Request.objects.select_related().filter(user=user)
-        return Response(status=status.HTTP_200_OK)
-    else:
-        return render(request, 'blog/task.html')
+        return render(request, 'blog/task_manager.html', {'data': data, 'user_id': user.id})
 
 
 progress1 = 0
@@ -144,8 +140,9 @@ def progress_bar():
 
 
 def task(request):
+    user_id = request.GET['user_id']
     if request.GET['task_id'] is not '0':
         t = Request.objects.get(id=request.GET['task_id'])
-        return render(request, 'blog/task.html', {'task': t})
+        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
     else:
-        return render(request, 'blog/task.html', {'task': None})
+        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id})

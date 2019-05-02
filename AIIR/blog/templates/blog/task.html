@@ -8,7 +8,12 @@
     <link href="../../static/styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="../../static/fontello-b51b9e18/css/fontello.css" rel="stylesheet" type="text/css" />
     <title>Fractality</title>
+	<script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
+		$(window).on('load', function clearUrl() {
+           window.history.pushState('', '', '/');
+           $('.invisible').hide();
+         });
 		var isRunning = false;
 		function btn_engage() 
 		{
@@ -42,16 +47,6 @@
 			  url: './reset/'
 		  });
 		}
-		
-		function go-to-history()
-		{
-		  $.ajax
-		  ({
-			  type: "POST",
-			  url: './history/',
-		  });
-		}
-	  
 		function getProgressFromServer() 
 		{
 			if(isRunning)
@@ -85,7 +80,10 @@
 				<h1>Fractality</h1>
 			</div>
 			<div class="history-button">
-				<button onclick="go-to-history()">Go to history</button>
+				<form method="get" action="/taskManager">
+					<input name="user_id" class="invisible" value="{{user_id}}"/>
+					<input type="submit" value="Back to history"/>
+				</form>
 			</div>
 			<div class="image-parameters">
 				<h2> Parameters </h2>

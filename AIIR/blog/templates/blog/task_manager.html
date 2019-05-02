@@ -57,10 +57,12 @@
 			</div>
 			<div class="buttons-cont">
 				<form method="get" action="task/">
+					<input name="user_id" class="invisible" value="{{user_id}}"/>
 					<input name="task_id" class="invisible" id="task_id_input"/>
 					<input type="submit" value="Go to selected fractal"/>
 				</form>
 				<form method="get" action="task/">
+					<input name="user_id" class="invisible" value="{{user_id}}"/>
 					<input name="task_id" class="invisible" value="0"/>
 					<input type="submit" value="Generate new fractal"/>
 				</form>
