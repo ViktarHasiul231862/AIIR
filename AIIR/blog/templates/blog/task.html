@@ -27,7 +27,8 @@
 			  {
 				  firstParam: $('#resolution').val(),
 				  secondParam: $('#iterations').val(),
-				  thirdParam: $('#quarter').val()
+				  thirdParam: $('#quarter').val(),
+				  user_id: $('#user_id').val()
 			  }
 		  });
 			  
@@ -51,6 +52,7 @@
 		{
 			if(isRunning)
 			{
+				var img_url;
 				$.ajax
 				({
 					type: "GET",
@@ -60,6 +62,7 @@
 						document.getElementById("progressBar1").value = data[0];
 						document.getElementById("progressBar2").value = data[1];
 						document.getElementById("progressBar3").value = data[2];
+						img_url = data[3];
 					}
 				});
 				if(    $('#progressBar1').val() === 100
@@ -67,7 +70,7 @@
                     && $('#progressBar3').val() === 100 )
 				{
 					isRunning = false;
-					document.getElementById('fractalImage').src = "../../static/images/fractal_square.jpg";
+					document.getElementById('fractalImage').src = img_url;
 				}
 			}
 		}
@@ -81,18 +84,18 @@
 			</div>
 			<div class="history-button">
 				<form method="get" action="/taskManager">
-					<input name="user_id" class="invisible" value="{{user_id}}"/>
+					<input id="user_id" name="user_id" class="invisible" value="{{user_id}}"/>
 					<input type="submit" value="Back to history"/>
 				</form>
 			</div>
 			<div class="image-parameters">
 				<h2> Parameters </h2>
-				<input type="text" id="resolution" size="10" placeholder="Resolution">
-				<input type="text" id="iterations" size="10" placeholder="Number of iterations">
-				<input type="text" id="quarter" size="10" placeholder="Quarter">
+				<input type="text" id="resolution" size="10" placeholder="Resolution" value="{{task.parameter1}}">
+				<input type="text" id="iterations" size="10" placeholder="Number of iterations" value="{{task.parameter2}}">
+				<input type="text" id="quarter" size="10" placeholder="Quarter" value="{{task.parameter3}}">
 			</div>
 			<div class="image-itself">
-				<img src="../../static/images/fractal_square.jpg" width="430" height="430" id="fractalImage">
+				<img src="{{task.image_url}}" width="430" height="430" id="fractalImage">
 			</div>
 			<div class="clusters-cont">
 				<h2> Nodes </h2>

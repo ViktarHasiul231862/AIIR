@@ -56,14 +56,15 @@ def login(request):
 
 @api_view(['GET', 'POST'])
 def task_manager(request):
-        user = User.objects.get(id=request.GET['user_id'])
-        data = Request.objects.select_related().filter(user=user)
-        return render(request, 'blog/task_manager.html', {'data': data, 'user_id': user.id})
+    user = User.objects.get(id=request.GET['user_id'])
+    data = Request.objects.select_related().filter(user=user)
+    return render(request, 'blog/task_manager.html', {'data': data, 'user_id': user.id})
 
 
 progress1 = 0
 progress2 = 0
 progress3 = 0
+img_url = ''
 
 
 @api_view(['POST'])
@@ -71,12 +72,14 @@ def execute_algorithm(request):
     global progress1
     global progress2
     global progress3
+    global img_url
 
     first_param = request.data['firstParam']
     second_param = request.data['secondParam']
     third_param = request.data['thirdParam']
+    user_id = int(request.data['user_id'])
 
-    host = '192.168.0.105'
+    host = '192.168.0.109'
     port = 22
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -85,13 +88,16 @@ def execute_algorithm(request):
                                                 + ' ' + second_param + ' ' + third_param)
     stdin.close()
     for line in iter(lambda: stdout.readline(2048), ""):
-        info, progress = line.split(": ", 1)
-        if info == "Master":
-            progress1 = progress
-        elif info == "Slave1":
-            progress2 = progress
-        elif info == "Slave2":
-            progress3 = progress
+        if '::' in line:
+            array = line.split(":: ")
+            info = array[0]
+            progress = array[1].replace('\n', '')
+            if info == "Master":
+                progress1 = progress
+            elif info == "Slave1":
+                progress2 = progress
+            elif info == "Slave2":
+                progress3 = progress
 
     client.close()
     client.close()
@@ -104,22 +110,25 @@ def execute_algorithm(request):
     sftp.get(remotepath, localpath)
     sftp.close()
     transport.close()
-
-    user = request._request.user
-    algorithm = Algorithm.objects.get(name="mandelbrot")
-    request = Request.object.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
-                                    parameter2=second_param, parameter3=third_param)
+    user = User.objects.get(id=user_id)
+    algorithm = Algorithm.objects.get(algorithm_name="mandelbrot")
+    new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
+                                      parameter2=second_param, parameter3=third_param)
+    new_task_id = new_task.id
     image = Image.open('out.png')
     bg = Image.new('RGB', image.size, (255, 255, 255))
     bg.paste(image, (0, 0), image)
-    bg.save("./blog/static/images/img" + request.id, quality=95)
-    return render(request, 'blog/login.html')
+    bg.save("./blog/static/images/img" + str(new_task_id) + ".jpg", quality=95)
+    new_task.image_url = "../../static/images/img" + str(new_task_id) + ".jpg"
+    new_task.save()
+    img_url = new_task.image_url
+    return render(request, 'blog/taskManager.html', {'task': new_task, 'user_id': user_id})
 
 
 @api_view(['POST'])
-def reset():
+def reset(request):
     print("reset")
-    host = '192.168.0.105'
+    host = '192.168.0.109'
     port = 22
 
     client = paramiko.SSHClient()
@@ -131,11 +140,13 @@ def reset():
 
 
 @api_view(['GET'])
-def progress_bar():
+def progress_bar(request):
     global progress1
     global progress2
     global progress3
-    data = [progress1 * 100, progress2 * 100, progress3 * 100]
+    global img_url
+    data = [float(progress1) * 100, float(progress2) * 100, float(progress3) * 100, img_url]
+    print(data)
     return Response(data, status.HTTP_200_OK)
 
 
