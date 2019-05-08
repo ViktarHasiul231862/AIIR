@@ -73,7 +73,12 @@ def execute_algorithm(request):
     global progress2
     global progress3
     global img_url
-
+    
+    progress1 = 0
+    progress2 = 0
+    progress3 = 0
+    img_url = ''
+    
     first_param = request.data['firstParam']
     second_param = request.data['secondParam']
     third_param = request.data['thirdParam']

@@ -32,6 +32,9 @@
 				  user_id: $('#user_id').val()
 			  }
 		  });
+		  
+		  document.getElementById("fractalImage").src="../../static/styles/loading.gif";
+		  document.getElementById("fractalImage").style.opacity = 0.3;
 			  
 		  document.getElementById("progressBar1").value = 0;
 		  document.getElementById("progressBar2").value = 0;
@@ -70,7 +73,9 @@
                     && $('#progressBar3').val() === 100 )
 				{
 					isRunning = false;
-					document.getElementById('fractalImage').src = img_url;
+					document.getElementById("fractalImage").src="";
+					document.getElementById('fractalImage').style.background = "url(" + img_url + ")";
+					document.getElementById("fractalImage").style.opacity = 1;
 					window.clearInterval(intervalListener);
 				}
 			}
@@ -96,7 +101,7 @@
 				<input type="text" id="quarter" size="10" placeholder="Quarter" value="{{task.parameter3}}">
 			</div>
 			<div class="image-itself">
-				<img src="{{task_image}}" width="430" height="430" id="fractalImage">
+				<img style="background:url({{task_image}});" width="430px" height="430" id="fractalImage">
 			</div>
 			<div class="clusters-cont">
 				<h2> Nodes </h2>
