@@ -154,6 +154,6 @@ def task(request):
     user_id = request.GET['user_id']
     if request.GET['task_id'] is not '0':
         t = Request.objects.get(id=request.GET['task_id'])
-        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
+        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id, 'task_image': t.image_url})
     else:
-        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id})
+        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id, 'task_image': "../../static/images/fractal_square.jpg"})
