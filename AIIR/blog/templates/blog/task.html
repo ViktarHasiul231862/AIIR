@@ -15,6 +15,7 @@
            $('.invisible').hide();
          });
 		var isRunning = false;
+	    var img_url = "";
 		function btn_engage() 
 		{
 		  if(isRunning)
@@ -37,7 +38,7 @@
 		  document.getElementById("progressBar3").value = 0;
 		  
 		  isRunning = true;
-		  setInterval(function () {getProgressFromServer()}, 2000);
+		 var intervalListener = setInterval(function () {getProgressFromServer()}, 2000);
 		}
 
 		function btn_reset() 
@@ -52,7 +53,6 @@
 		{
 			if(isRunning)
 			{
-				var img_url;
 				$.ajax
 				({
 					type: "GET",
@@ -71,6 +71,7 @@
 				{
 					isRunning = false;
 					document.getElementById('fractalImage').src = img_url;
+					window.clearInterval(intervalListener);
 				}
 			}
 		}
