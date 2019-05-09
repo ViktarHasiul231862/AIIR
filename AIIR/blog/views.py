@@ -127,7 +127,7 @@ def execute_algorithm(request):
     new_task.image_url = "../../static/images/img" + str(new_task_id) + ".jpg"
     new_task.save()
     img_url = new_task.image_url
-    return render(request, 'blog/taskManager.html', {'task': new_task, 'user_id': user_id})
+    return render(request, 'blog/task_manager.html', {'task': new_task, 'user_id': user_id})
 
 
 @api_view(['POST'])
