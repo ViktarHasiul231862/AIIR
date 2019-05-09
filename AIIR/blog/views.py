@@ -13,6 +13,7 @@ from django.core import serializers
 import json
 from datetime import datetime
 from django.core.serializers.json import DjangoJSONEncoder
+import time
 
 
 def home(request):
@@ -84,6 +85,12 @@ def execute_algorithm(request):
     third_param = request.data['thirdParam']
     user_id = int(request.data['user_id'])
 
+    user = User.objects.get(id=user_id)
+    algorithm = Algorithm.objects.get(algorithm_name="mandelbrot")
+    new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
+                                      parameter2=second_param, parameter3=third_param, status="In queue")
+    idOfDoneFractal = new_task.id
+
     host = '192.168.0.109'
     port = 22
     client = paramiko.SSHClient()
@@ -115,16 +122,21 @@ def execute_algorithm(request):
     sftp.get(remotepath, localpath)
     sftp.close()
     transport.close()
-    user = User.objects.get(id=user_id)
-    algorithm = Algorithm.objects.get(algorithm_name="mandelbrot")
-    new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
-                                      parameter2=second_param, parameter3=third_param)
-    new_task_id = new_task.id
+
+    # for k in range(10):
+    #     time.sleep(1)
+    #     progress1=(k+1) * 0.1
+    #     progress2 = (k + 1) * 0.1
+    #     progress3 = (k + 1) * 0.1
+
     image = Image.open('out.png')
     bg = Image.new('RGB', image.size, (255, 255, 255))
     bg.paste(image, (0, 0), image)
     bg.save("./blog/static/images/img" + str(new_task_id) + ".jpg", quality=95)
-    new_task.image_url = "../../static/images/img" + str(new_task_id) + ".jpg"
+
+    new_task = Request.objects.get(id=idOfDoneFractal)
+    new_task.image_url = "../../static/images/img" + str(idOfDoneFractal) + ".jpg"
+    new_task.status = "Done"
     new_task.save()
     img_url = new_task.image_url
     return render(request, 'blog/task_manager.html', {'task': new_task, 'user_id': user_id})
@@ -154,11 +166,18 @@ def progress_bar(request):
     print(data)
     return Response(data, status.HTTP_200_OK)
 
+#Default parameters
+class fakeTask:
+    progress1=0
+    progress2=0
+    progress3=0
+    image_url="../../static/images/fractal_square.jpg"
 
 def task(request):
     user_id = request.GET['user_id']
     if request.GET['task_id'] is not '0':
         t = Request.objects.get(id=request.GET['task_id'])
-        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id, 'task_image': t.image_url})
+        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
     else:
-        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id, 'task_image': "../../static/images/fractal_square.jpg"})
+        t = fakeTask()
+        return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})

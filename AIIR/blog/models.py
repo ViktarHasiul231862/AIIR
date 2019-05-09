@@ -15,3 +15,7 @@ class Request(models.Model):
     parameter1 = models.CharField(max_length=5)
     parameter2 = models.CharField(max_length=5)
     parameter3 = models.CharField(max_length=5)
+    progress1 = models.CharField(max_length=5)
+    progress2 = models.CharField(max_length=5)
+    progress3 = models.CharField(max_length=5)
+    status = models.CharField(max_length=12)

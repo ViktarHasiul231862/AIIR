@@ -101,19 +101,19 @@
 				<input type="text" id="quarter" size="10" placeholder="Quarter" value="{{task.parameter3}}">
 			</div>
 			<div class="image-itself">
-				<img style="background:url({{task_image}});" width="430px" height="430" id="fractalImage">
+				<img style="background:url({{task.image_url}});" width="430px" height="430" id="fractalImage">
 			</div>
 			<div class="clusters-cont">
 				<h2> Nodes </h2>
 				<div class="progress-bars">
 				<ul>
-				<progress id="progressBar1" value="0" max="100"></progress>
+				<progress id="progressBar1" value="{{task.progress1}}" max="100"></progress>
 				</ul>
 				<ul>
-				<progress id="progressBar2" value="0" max="100"></progress>
+				<progress id="progressBar2" value="{{task.progress2}}" max="100"></progress>
 				</ul>
 				<ul>
-				<progress id="progressBar3" value="0" max="100"></progress>
+				<progress id="progressBar3" value="{{task.progress3}}" max="100"></progress>
 				</ul>
 				</div>
 			</div>
