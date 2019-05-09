@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="abe84374-a726-4fa1-8f6d-394436411111" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/static/images/img5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/static/images/img6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/static/images/img7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/static/images/img8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AIIR/blog/static/images/img9.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIIR/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIIR/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/out.png" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/out.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,18 +53,35 @@
         <item name="db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="django_session: table" type="3d80ac25:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
-        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blog_request: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_request">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -74,6 +97,9 @@
       <find>start_count</find>
       <find>index</find>
       <find>task</find>
+      <find>fake</find>
+      <find>request.po</find>
+      <find>task_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,7 +120,6 @@
         <option value="$PROJECT_DIR$/AIIR/blog/tests.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/index.html" />
-        <option value="$PROJECT_DIR$/AIIR/blog/models.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/registration.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/login.html" />
@@ -103,6 +128,7 @@
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/task_manager.html" />
         <option value="$PROJECT_DIR$/AIIR/blog/urls.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" />
+        <option value="$PROJECT_DIR$/AIIR/blog/models.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/views.py" />
       </list>
     </option>
@@ -121,7 +147,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,15 +176,7 @@
               <item name="AIIR" type="462c0819:PsiDirectoryNode" />
               <item name="AIIR" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIIR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIIR" type="462c0819:PsiDirectoryNode" />
-              <item name="AIIR" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AIIR" type="b2602c69:ProjectViewProjectNode" />
@@ -175,16 +192,12 @@
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIIR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIIR" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,16 +253,18 @@
       <workItem from="1556805238088" duration="620000" />
       <workItem from="1556823264625" duration="5396000" />
       <workItem from="1556829250694" duration="1532000" />
+      <workItem from="1557403374230" duration="10542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84427000" />
+    <option name="totallyTimeSpent" value="94969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29957357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30277187" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -259,8 +274,8 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.5503792" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.54279524" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -269,7 +284,7 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="4" visible="true" weight="0.15724947" />
     </layout>
     <layout-to-restore>
@@ -301,14 +316,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HTMLLogic/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/HTMLLogic/admin.py" />
-    <entry file="file://$PROJECT_DIR$/HTMLLogic/apps.py" />
-    <entry file="file://$PROJECT_DIR$/AIIR/hellodjango/views.py" />
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/home.html" />
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/base.html" />
-    <entry file="file://$PROJECT_DIR$/AIIR/hellodjango/apps.py" />
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/mpi_test.py" />
     <entry file="file://$PROJECT_DIR$/AIIR/blog/tests.py" />
     <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/about.html" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/paramiko/kex_ecdh_nist.py">
@@ -362,24 +369,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/blog/migrations/0002_auto_20190416_1512.py" />
-    <entry file="uml://DATABASE/14348fce-b897-4040-a423-c46bb25a1443">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>14348fce-b897-4040-a423-c46bb25a1443</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="357.0" y="284.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_user">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -387,21 +376,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_request.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/auth_group">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -431,13 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/auth_user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/django_admin_log">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -449,23 +418,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_request">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -483,47 +435,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img5.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img6.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_algorithm">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task_manager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/registration.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -543,6 +459,144 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="1420" selection-start-line="1420" selection-end-line="1420" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img11.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img8.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img7.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img9.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img13.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/static/images/img12.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_request.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/auth_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_algorithm">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/14348fce-b897-4040-a423-c46bb25a1443/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="uml://DATABASE/14348fce-b897-4040-a423-c46bb25a1443">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>14348fce-b897-4040-a423-c46bb25a1443</OriginalElement>
+          <nodes>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.django_admin_log</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.sqlite_master</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.django_migrations</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.blog_request</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.sqlite_sequence</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_group_permissions</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_group</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.django_session</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.django_content_type</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_user</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_user_groups</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_permission</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.auth_user_user_permissions</node>
+            <node x="" y="">14348fce-b897-4040-a423-c46bb25a1443.TABLE:main.blog_algorithm</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9840579710144924" x="734.7054491899854" y="629.5051546391753" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task_manager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://14348fce-b897-4040-a423-c46bb25a1443/schema/main/table/blog_request">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

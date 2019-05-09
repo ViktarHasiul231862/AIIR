@@ -30,6 +30,9 @@
 				  secondParam: $('#iterations').val(),
 				  thirdParam: $('#quarter').val(),
 				  user_id: $('#user_id').val()
+			  },
+			  success: function(task_id) {
+			  	document.getElementById("task_id").value = task_id;
 			  }
 		  });
 		  
@@ -59,13 +62,18 @@
 				$.ajax
 				({
 					type: "GET",
-					url: './progress',
+					url: './progress/',
+					data:
+			  		{
+				  		task_id: $('#task_id').val()
+			  		},
 					success: function(data) 
 					{
 						document.getElementById("progressBar1").value = data[0];
 						document.getElementById("progressBar2").value = data[1];
 						document.getElementById("progressBar3").value = data[2];
 						img_url = data[3];
+						console.log($('task.id'))
 					}
 				});
 				if(    $('#progressBar1').val() === 100
@@ -91,6 +99,7 @@
 			<div class="history-button">
 				<form method="get" action="/taskManager">
 					<input id="user_id" name="user_id" class="invisible" value="{{user_id}}"/>
+					<input id="task_id" name="task_id" class="invisible" value="{{task.id}}"/>
 					<input type="submit" value="Back to history"/>
 				</form>
 			</div>
