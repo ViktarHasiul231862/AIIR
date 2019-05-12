@@ -84,10 +84,10 @@ body,
   grid-template-areas: "menu topBar topBar" "menu content sideBarR" "menu footer footer";
 }
 
-.header { grid-area: header; min-height: 100px; margin-top: 50px; font-size: 30px;}
-.image-parameters { grid-area: imgparameters;}
-.image-itself { grid-area: imageitself; }
-.clusters-cont { grid-area: nodes;}
+.header { grid-area: header; min-height: 100px; margin-top: 20px; font-size: 30px;}
+.image-parameters { grid-area: imgparameters; margin-top: 40px; font-size: 20px;}
+.image-itself { grid-area: imageitself;}
+.clusters-cont { grid-area: nodes; margin-top: 40px; font-size: 20px;}
 .buttons-cont { grid-area: buttons;}
 .history-button { grid-area: historybutton; align:right; vertical-align: top; }
 
@@ -100,10 +100,10 @@ body,
     'empty header historybutton'
     'imgparameters imageitself nodes'
 	'buttons buttons buttons';
-	grid-template-columns: 430px 430px 430px;
+	grid-template-columns: 430px 600px 430px;
 }
 
-.tasks-header { grid-area: tasks-header;  margin-top: 50px; font-size: 30px;}
+.tasks-header { grid-area: tasks-header;  margin-top: 20px; font-size: 30px;}
 .task-table-header { grid-area: table-of-tasks-header;  margin-top: 20px;}
 .task-table-rows { grid-area: table-of-tasks-rows;  margin-top: 20px; max-height: 400px; width: 102.5%;}
 .buttons-cont { grid-area: buttons;}

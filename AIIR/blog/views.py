@@ -169,6 +169,12 @@ def progress_bar(request):
             task_from_db.image_url, task_from_db.status]
     return Response(data, status.HTTP_200_OK)
 
+#Default parameters
+class fakeTask:
+    progress1=0
+    progress2=0
+    progress3=0
+    image_url="../../static/images/fractal_square.jpg"
 
 def task(request):
     user_id = request.GET['user_id']
@@ -176,5 +182,5 @@ def task(request):
         t = Request.objects.get(id=request.GET['task_id'])
         return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
     else:
-        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id})
-
+        t = fakeTask()
+    return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})

@@ -32,36 +32,35 @@
 	<div class="content">
 		<div class="list-container">
 			<div class="tasks-header">
-				History of fractals
-			<div>
-				<div class="task-table-header">
-					<table align="center" style="font-size: 20px">
-						<tbody>
-							<tr style="background-color: #ffffff; color: black;">
-								<th class="date"><b>Date</b></th>
-								<th><b>Resolution</b></th>
-								<th><b>Number of iterations</b></th>
-								<th><b>Quarter</b></th>
-								<th><b>Duration</b></th>
-								<th style="display:none;"><b>Id</b></th>
-						</tbody>
-					</table>
-				</div>
-				<div  id="taskTable" class="task-table-rows" style="overflow-y: auto;">
-					<table align="center" class="row" style="font-size: 20px" style="overflow-y: auto;">
-						<tbody >
-							{% for task in data %}
-							<tr id="row">
-								<td class="date">{{task.date}}</td>
-								<td>{{task.parameter1}}</td>
-								<td>{{task.parameter2}}</td>
-								<td>{{task.parameter3}}</td>
-								<td>20s</td>
-								<td class="id" style="display:none;">{{task.id}}</td>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
+				<h1>History of fractals</h1>
+			</div>
+			<div class="task-table-header">
+				<table align="center" style="font-size: 20px">
+					<tbody>
+						<tr style="background-color: #ffffff; color: black;">
+							<th class="date"><b>Date</b></th>
+							<th><b>Resolution</b></th>
+							<th><b>Number of iterations</b></th>
+							<th><b>Quarter</b></th>
+							<th><b>Duration</b></th>
+							<th style="display:none;"><b>Id</b></th>
+					</tbody>
+				</table>
+			</div>
+			<div  id="taskTable" class="task-table-rows" style="overflow-y: auto;">
+				<table align="center" class="row" style="font-size: 20px" style="overflow-y: auto;">
+					<tbody >
+						{% for task in data %}
+						<tr id="row">
+							<td class="date">{{task.date}}</td>
+							<td>{{task.parameter1}}</td>
+							<td>{{task.parameter2}}</td>
+							<td>{{task.parameter3}}</td>
+							<td>20s</td>
+							<td class="id" style="display:none;">{{task.id}}</td>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 			<div class="buttons-cont">
 				<form method="get" action="task/">
