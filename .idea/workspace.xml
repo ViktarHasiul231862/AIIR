@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abe84374-a726-4fa1-8f6d-394436411111" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/blog/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/AIIR/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIIR/out.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,13 +42,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
               <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="123" column="66" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,6 +86,7 @@
       <find>request.po</find>
       <find>task_id</find>
       <find>img_</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,8 +115,8 @@
         <option value="$PROJECT_DIR$/AIIR/blog/urls.py" />
         <option value="$PROJECT_DIR$/AIIR/blog/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" />
         <option value="$PROJECT_DIR$/AIIR/blog/views.py" />
+        <option value="$PROJECT_DIR$/AIIR/blog/templates/blog/task.html" />
       </list>
     </option>
   </component>
@@ -240,15 +246,15 @@
       <workItem from="1557415028726" duration="115000" />
       <workItem from="1557426940653" duration="8099000" />
       <workItem from="1557477284179" duration="710000" />
-      <workItem from="1557685459576" duration="2471000" />
+      <workItem from="1557685459576" duration="2555000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106577000" />
+    <option name="totallyTimeSpent" value="106661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31556502" />
@@ -545,22 +551,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AIIR/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AIIR/blog/templates/blog/task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="123" column="66" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

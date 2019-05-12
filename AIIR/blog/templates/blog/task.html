@@ -48,14 +48,6 @@
 		 var intervalListener = setInterval(function () {getProgressFromServer()}, 2000);
 		}
 
-		function btn_reset() 
-		{
-		  $.ajax
-		  ({
-			  type: "POST",
-			  url: './reset/'
-		  });
-		}
 		var status ='';
 		function getProgressFromServer() 
 		{
@@ -130,7 +122,6 @@
 			</div>
 			<div class="buttons-cont">
 				<button onclick="btn_engage()">Engage Now</button>
-				<button onclick="btn_reset()">Reset</button>
 			</div>
 		</div>
 	</div>
