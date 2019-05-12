@@ -104,7 +104,8 @@ body,
 }
 
 .tasks-header { grid-area: tasks-header;  margin-top: 50px; font-size: 30px;}
-.task-table { grid-area: table-of-tasks;  margin-top: 20px; max-height: 500px;}
+.task-table-header { grid-area: table-of-tasks-header;  margin-top: 20px;}
+.task-table-rows { grid-area: table-of-tasks-rows;  margin-top: 20px; max-height: 400px; width: 102.5%;}
 .buttons-cont { grid-area: buttons;}
 
 .list-container{
@@ -114,7 +115,8 @@ body,
 	grid-gap: 10px;
 	grid-template-areas:
     'tasks-header'
-    'table-of-tasks'
+    'table-of-tasks-header'
+    'table-of-tasks-rows'
 	'buttons';
 }
 
@@ -185,6 +187,12 @@ td,
 th {
   border: 1px solid #999;
   padding: 1.5rem;
+  width: 120px;
+}
+
+.date
+{
+	width: 250px;
 }
 
 .row tbody tr.highlight td {
