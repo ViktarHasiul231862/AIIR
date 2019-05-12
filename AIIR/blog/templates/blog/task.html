@@ -29,7 +29,8 @@
 				  firstParam: $('#resolution').val(),
 				  secondParam: $('#iterations').val(),
 				  thirdParam: $('#quarter').val(),
-				  user_id: $('#user_id').val()
+				  user_id: $('#user_id').val(),
+				  task_id: $('#task_id').val()
 			  },
 			  success: function(task_id) {
 			  	document.getElementById("task_id").value = task_id;
@@ -55,6 +56,7 @@
 			  url: './reset/'
 		  });
 		}
+		var status ='';
 		function getProgressFromServer() 
 		{
 			if(isRunning)
@@ -73,16 +75,16 @@
 						document.getElementById("progressBar2").value = data[1];
 						document.getElementById("progressBar3").value = data[2];
 						img_url = data[3];
-						console.log($('task.id'))
+						status = data[4];
 					}
 				});
 				if(    $('#progressBar1').val() === 100
                     && $('#progressBar2').val() === 100
-                    && $('#progressBar3').val() === 100 )
+                    && $('#progressBar3').val() === 100
+					&& status === 'Done')
 				{
 					isRunning = false;
-					document.getElementById("fractalImage").src="";
-					document.getElementById('fractalImage').style.background = "url(" + img_url + ")";
+					document.getElementById("fractalImage").src= img_url;
 					document.getElementById("fractalImage").style.opacity = 1;
 					window.clearInterval(intervalListener);
 				}

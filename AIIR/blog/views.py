@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from datetime import datetime
 import time
 import threading
-
+import os
 
 
 def home(request):
@@ -71,7 +71,18 @@ def execute_algorithm(request):
     algorithm = Algorithm.objects.get(algorithm_name="mandelbrot")
     new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
                                       parameter2=second_param, parameter3=third_param, status="In queue", progress1=0,
-                                      progress2=0, progress3=0, image_url="../../static/images/fractal_square.jpg")
+                                      progress2=0, progress3=0, image_url="../../static/images/fractal_square.jpg",
+                                      plane_data1=-1.0, plane_data2=1.0, plane_data3=1.0, plane_data4=-1.0)
+    new_task.image_url = "../../static/images/img" + str(new_task.id) + ".jpg"
+    print(request.data)
+    if request.data['task_id'] is not '':
+        task_id = int(request.data['task_id'])
+        prev_task = Request.objects.get(id=task_id)
+        new_task.plane_data1 = prev_task.plane_data1
+        new_task.plane_data2 = prev_task.plane_data2
+        new_task.plane_data3 = prev_task.plane_data3
+        new_task.plane_data4 = prev_task.plane_data4
+    new_task.save()
     threading.Thread(target=send_task_to_master).start()
     return Response(new_task.id, status.HTTP_200_OK)
 
@@ -88,11 +99,23 @@ def send_task_to_master():
     for new_task in Request.objects.select_related().filter(status="In queue"):
         host = '192.168.0.109'
         port = 22
+
+        transport = paramiko.Transport(host, port)
+        transport.connect(username='vm1', password='wlodek')
+        sftp = paramiko.SFTPClient.from_transport(transport)
+
+        with open("old.txt", 'w') as f:
+            f.write(str(new_task.plane_data1) + '\n')
+            f.write(str(new_task.plane_data2) + '\n')
+            f.write(str(new_task.plane_data3) + '\n')
+            f.write(str(new_task.plane_data4) + '\n')
+        sftp.put(os.getcwd() + '\\old.txt', './old.txt')
+
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(hostname=host, username="vm1", password="wlodek", port=port)
-        stdin, stdout, stderr = client.exec_command('./run.sh ' + new_task.first_param
-                                                    + ' ' + new_task.second_param + ' ' + new_task.third_param)
+        stdin, stdout, stderr = client.exec_command('./run.sh ' + new_task.parameter1
+                                                    + ' ' + new_task.parameter2 + ' ' + new_task.parameter3)
         stdin.close()
         progress1 = 0
         progress2 = 0
@@ -110,20 +133,19 @@ def send_task_to_master():
                     progress2 = progress
                 elif info == "Slave2":
                     progress3 = progress
-                if count % 50:
+                elif info == "Done":
+                    plane_data = progress.split(" ")
+                    new_task.plane_data1 = plane_data[0]
+                    new_task.plane_data2 = plane_data[1]
+                    new_task.plane_data3 = plane_data[2]
+                    new_task.plane_data4 = plane_data[3]
+                if count % 50 == 0:
                     new_task.progress1 = progress1
                     new_task.progress2 = progress2
                     new_task.progress3 = progress3
                     new_task.save()
         client.close()
-        client.close()
-        transport = paramiko.Transport(host, port)
-        transport.connect(username='vm1', password='wlodek')
-        sftp = paramiko.SFTPClient.from_transport(transport)
-
-        remotepath = '/home/vm1/out.png'
-        localpath = 'out.png'
-        sftp.get(remotepath, localpath)
+        sftp.get('/home/vm1/out.png', 'out.png')
         sftp.close()
         transport.close()
 
@@ -132,28 +154,11 @@ def send_task_to_master():
         bg.paste(image, (0, 0), image)
         bg.save("./blog/static/images/img" + str(new_task.id) + ".jpg", quality=95)
 
-        new_task.progress1 = progress1
-        new_task.progress2 = progress2
-        new_task.progress3 = progress3
-        new_task.image_url = "../../static/images/img" + str(new_task.id) + ".jpg"
         new_task.status = "Done"
         new_task.save()
+
     master_busy = False
     return
-
-
-@api_view(['POST'])
-def reset(request):
-    print("reset")
-    host = '192.168.0.109'
-    port = 22
-
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostname=host, username="vm1", password="wlodek", port=port)
-    client.exec_command('./reset.sh')
-    client.close()
-    return Response(status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -161,7 +166,7 @@ def progress_bar(request):
     task_id = int(request.GET['task_id'])
     task_from_db = Request.objects.get(id=task_id)
     data = [float(task_from_db.progress1) * 100, float(task_from_db.progress2) * 100, float(task_from_db.progress3) * 100,
-            task_from_db.image_url]
+            task_from_db.image_url, task_from_db.status]
     return Response(data, status.HTTP_200_OK)
 
 
