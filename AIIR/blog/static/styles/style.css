@@ -211,6 +211,12 @@ p input
 	margin-top: 5px;
 }
 
+#generateNewFractalCheckbox
+{
+	width: 15px;
+	margin-left: 33px;
+}
+
 .row tbody tr.highlight td {
   background-color: #ccc;
 }

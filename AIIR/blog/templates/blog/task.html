@@ -9,7 +9,7 @@
     <link href="../../static/fontello-b51b9e18/css/fontello.css" rel="stylesheet" type="text/css" />
     <title>Fractality</title>
 	<script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script>
+    <script>	
 		$(window).on('load', function clearUrl() {
            window.history.pushState('', '', '/');
            $('.invisible').hide();
@@ -26,9 +26,8 @@
 			  url: './params/',
 			  data:
 			  {
-				  firstParam: $('#resolution').val(),
-				  secondParam: $('#iterations').val(),
-				  thirdParam: $('#quarter').val(),
+				  seed: $('#seed').val(),
+				  iterations: $('#iterations').val(),
 				  user_id: $('#user_id').val(),
 				  task_id: $('#task_id').val()
 			  },
@@ -84,6 +83,56 @@
 				}
 			}
 		}
+		
+		function changeVisibility()
+		{
+			if(document.getElementById("generateNewFractalCheckbox").checked)
+			{
+				hide(document.querySelectorAll('.zoominClass'));
+				show(document.querySelectorAll('.generateFractalClass'));
+			}
+			else
+			{
+				hide(document.querySelectorAll('.generateFractalClass'));
+				show(document.querySelectorAll('.zoominClass'));
+			}
+		}
+		
+		function hide (elements)
+		{
+			elements = elements.length ? elements : [elements];
+			for (var index = 0; index < elements.length; index++) 
+			{
+			elements[index].style.display = 'none';
+			}
+		}
+		function show (elements, specifiedDisplay) 
+		{
+		  elements = elements.length ? elements : [elements];
+		  for (var index = 0; index < elements.length; index++) 
+			{
+			elements[index].style.display = specifiedDisplay || 'block';
+			}
+		}
+		
+		function btn_generate_new()
+		{
+			document.getElementById("generateNewFractalCheckbox").style.display = 'inline';
+			document.getElementById("checkBoxId").style.display = 'inline';
+			document.getElementById("generateNewFractalCheckbox").checked = true;
+			
+			$.ajax
+			  ({
+				  type: "POST",
+				  url: './generate_fractal/',
+				  data:
+				  {
+					  quarter: $('#quarter').val(),
+					  user_id: $('#user_id').val(),
+					  task_id: $('#task_id').val()
+				  },
+			  });
+		}
     </script>
 </head>
 <body>
@@ -101,11 +150,13 @@
 			</div>
 			<div class="image-parameters">
 				<h2> Parameters </h2>
-				<p><b>Resolution:</b><br>
-				<input type="text" id="resolution" size="10" value="{{task.parameter1}}"></p>
-				<p><b>Number of iterations:</b><br>
+				<p><input type="checkbox" style="display: none" onchange="changeVisibility()" id="generateNewFractalCheckbox" size="10">
+				<b id="checkBoxId"style="display: none">New fractal parameters</b></p>
+				<p class="generateFractalClass"><b>Seed:</b><br>
+				<input type="text" id="seed" size="10" value="{{task.parameter1}}"></p>
+				<p class="generateFractalClass"><b>Number of iterations:</b><br>
 				<input type="text" id="iterations" size="10" value="{{task.parameter2}}"></p>
-				<p><b>Quarter:</b><br>
+				<p class="zoominClass" style="display: none"><b>Quarter:</b><br>
 				<input type="text" id="quarter" size="10" value="{{task.parameter3}}"></p>
 			</div>
 			<div class="image-itself">
@@ -126,7 +177,8 @@
 				</div>
 			</div>
 			<div class="buttons-cont">
-				<button onclick="btn_engage()">Engage Now</button>
+				<button class="zoominClass" style="display: none" onclick="btn_engage()">Zoom in</button>
+				<button class="generateFractalClass" onclick="btn_generate_new()">Generate new fractal</button>
 			</div>
 		</div>
 	</div>

@@ -8,5 +8,6 @@ urlpatterns = [
     path('login/', views.login, name="login"),
     path('registration/', views.registration, name="registration"),
     path('taskManager/', views.task_manager, name="task-manager"),
-    path('task/', views.task, name="task")
+    path('task/', views.task, name="task"),
+    path('generate_fractal/', views.generate_fractal, name="generate_fractal")
 ]
