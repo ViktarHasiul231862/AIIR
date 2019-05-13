@@ -76,7 +76,8 @@
 					&& status === 'Done')
 				{
 					isRunning = false;
-					document.getElementById("fractalImage").src= img_url;
+					document.getElementById("fractalImage").src="";
+				    document.getElementById('fractalImage').style.background = "url(" + img_url + ")";
 					document.getElementById("fractalImage").style.opacity = 1;
 					window.clearInterval(intervalListener);
 				}
@@ -99,9 +100,12 @@
 			</div>
 			<div class="image-parameters">
 				<h2> Parameters </h2>
-				<input type="text" id="resolution" size="10" placeholder="Resolution" value="{{task.parameter1}}">
-				<input type="text" id="iterations" size="10" placeholder="Number of iterations" value="{{task.parameter2}}">
-				<input type="text" id="quarter" size="10" placeholder="Quarter" value="{{task.parameter3}}">
+				<p><b>Resolution:</b><br>
+				<input type="text" id="resolution" size="10" value="{{task.parameter1}}"></p>
+				<p><b>Number of iterations:</b><br>
+				<input type="text" id="iterations" size="10" value="{{task.parameter2}}"></p>
+				<p><b>Quarter:</b><br>
+				<input type="text" id="quarter" size="10" value="{{task.parameter3}}"></p>
 			</div>
 			<div class="image-itself">
 				<img style="background:url({{task.image_url}}); background-size: 600px;" width="600px" height="600px" id="fractalImage">
