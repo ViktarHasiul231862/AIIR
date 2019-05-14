@@ -14,6 +14,17 @@
            window.history.pushState('', '', '/');
            $('.invisible').hide();
          });
+		 
+		window.onload=function() {
+			 if(document.getElementById('fractalImage').style.backgroundImage != "url(\"\")")
+			 {
+				hide(document.querySelectorAll('.generateFractalClass'));
+				show(document.querySelectorAll('.zoominClass'));
+				document.getElementById("generateNewFractalCheckbox").style.display = 'inline';
+				document.getElementById("checkBoxId").style.display = 'inline';
+			 }
+		}
+		 
 		var isRunning = false;
 	    var img_url = "";
 		function btn_engage() 
