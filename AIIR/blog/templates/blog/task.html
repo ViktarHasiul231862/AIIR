@@ -28,6 +28,7 @@
 			  {
 				  seed: $('#seed').val(),
 				  iterations: $('#iterations').val(),
+				  quarter: $('#quarter').val(),
 				  user_id: $('#user_id').val(),
 				  task_id: $('#task_id').val()
 			  },
@@ -117,6 +118,8 @@
 		
 		function btn_generate_new()
 		{
+			 if(isRunning)
+				return;
 			document.getElementById("generateNewFractalCheckbox").style.display = 'inline';
 			document.getElementById("checkBoxId").style.display = 'inline';
 			document.getElementById("generateNewFractalCheckbox").checked = true;
@@ -124,14 +127,29 @@
 			$.ajax
 			  ({
 				  type: "POST",
-				  url: './generate_fractal/',
+				  url: './params/',
 				  data:
 				  {
-					  quarter: $('#quarter').val(),
+                      seed: $('#seed').val(),
+					  iterations: $('#iterations').val(),
+					  quarter: '',
 					  user_id: $('#user_id').val(),
 					  task_id: $('#task_id').val()
 				  },
+				  success: function(task_id) {
+			  	      document.getElementById("task_id").value = task_id;
+				  }
 			  });
+
+			 document.getElementById("fractalImage").src="../../static/styles/loading.gif";
+		  	 document.getElementById("fractalImage").style.opacity = 0.3;
+
+		     document.getElementById("progressBar1").value = 0;
+		     document.getElementById("progressBar2").value = 0;
+		     document.getElementById("progressBar3").value = 0;
+
+		     isRunning = true;
+		 var intervalListener = setInterval(function () {getProgressFromServer()}, 2000);
 		}
     </script>
 </head>

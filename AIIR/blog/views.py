@@ -62,20 +62,20 @@ def task_manager(request):
 
 @api_view(['POST'])
 def execute_algorithm(request):
-    first_param = request.data['firstParam']
-    second_param = request.data['secondParam']
-    third_param = request.data['thirdParam']
+    seed = request.data['seed']
+    iterations = request.data['iterations']
+    quarter = request.data['quarter']
     user_id = int(request.data['user_id'])
 
     user = User.objects.get(id=user_id)
     algorithm = Algorithm.objects.get(algorithm_name="mandelbrot")
-    new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), parameter1=first_param,
-                                      parameter2=second_param, parameter3=third_param, status="In queue", progress1=0,
+    new_task = Request.objects.create(user=user, algorithm=algorithm, date=datetime.now(), seed=seed,
+                                      iterations=iterations, quarter=quarter, status="In queue", progress1=0,
                                       progress2=0, progress3=0, image_url="../../static/images/fractal_square.jpg",
                                       plane_data1=-1.0, plane_data2=1.0, plane_data3=1.0, plane_data4=-1.0)
     new_task.image_url = "../../static/images/img" + str(new_task.id) + ".jpg"
     print(request.data)
-    if request.data['task_id'] is not '':
+    if request.data['task_id'] is not '' and request.data['seed'] is not '':
         task_id = int(request.data['task_id'])
         prev_task = Request.objects.get(id=task_id)
         new_task.plane_data1 = prev_task.plane_data1
@@ -97,6 +97,7 @@ def send_task_to_master():
         time.sleep(10)
     master_busy = True
     for new_task in Request.objects.select_related().filter(status="In queue"):
+        time_start = time.time()
         host = '192.168.0.109'
         port = 22
 
@@ -114,8 +115,8 @@ def send_task_to_master():
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(hostname=host, username="vm1", password="wlodek", port=port)
-        stdin, stdout, stderr = client.exec_command('./run.sh ' + new_task.parameter1
-                                                    + ' ' + new_task.parameter2 + ' ' + new_task.parameter3)
+        stdin, stdout, stderr = client.exec_command('./run.sh ' + new_task.seed
+                                                    + ' ' + new_task.iterations + ' ' + new_task.quarter)
         stdin.close()
         progress1 = 0
         progress2 = 0
@@ -155,6 +156,9 @@ def send_task_to_master():
         bg.save("./blog/static/images/img" + str(new_task.id) + ".jpg", quality=95)
 
         new_task.status = "Done"
+        time_delta = int(time.time() - time_start)
+        print(time_delta)
+        new_task.duration = time_delta
         new_task.save()
 
     master_busy = False
@@ -169,12 +173,6 @@ def progress_bar(request):
             task_from_db.image_url, task_from_db.status]
     return Response(data, status.HTTP_200_OK)
 
-#Default parameters
-class fakeTask:
-    progress1=0
-    progress2=0
-    progress3=0
-    image_url="../../static/images/fractal_square.jpg"
 
 def task(request):
     user_id = request.GET['user_id']
@@ -182,5 +180,4 @@ def task(request):
         t = Request.objects.get(id=request.GET['task_id'])
         return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
     else:
-        t = fakeTask()
-    return render(request, 'blog/task.html', {'task': t, 'user_id': user_id})
+        return render(request, 'blog/task.html', {'task': None, 'user_id': user_id})
