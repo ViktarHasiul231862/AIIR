@@ -74,14 +74,17 @@ def execute_algorithm(request):
                                       progress2=0, progress3=0, image_url="../../static/images/fractal_square.jpg",
                                       plane_data1=-1.0, plane_data2=1.0, plane_data3=1.0, plane_data4=-1.0)
     new_task.image_url = "../../static/images/img" + str(new_task.id) + ".jpg"
-    print(request.data)
-    if request.data['task_id'] is not '' and request.data['seed'] is not '':
+    if request.data['task_id'] is not '':
         task_id = int(request.data['task_id'])
         prev_task = Request.objects.get(id=task_id)
-        new_task.plane_data1 = prev_task.plane_data1
-        new_task.plane_data2 = prev_task.plane_data2
-        new_task.plane_data3 = prev_task.plane_data3
-        new_task.plane_data4 = prev_task.plane_data4
+        if request.data['seed'] is '':
+            new_task.seed = prev_task.seed
+            new_task.iterations = prev_task.iterations
+        if request.data['quarter'] is not '':
+            new_task.plane_data1 = prev_task.plane_data1
+            new_task.plane_data2 = prev_task.plane_data2
+            new_task.plane_data3 = prev_task.plane_data3
+            new_task.plane_data4 = prev_task.plane_data4
     new_task.save()
     threading.Thread(target=send_task_to_master).start()
     return Response(new_task.id, status.HTTP_200_OK)
