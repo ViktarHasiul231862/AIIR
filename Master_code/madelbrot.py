@@ -9,12 +9,14 @@ _x_and_y = numpy.zeros(4)
 
 #old arguments from file old.txt
 old_arguments = numpy.zeros(4)
+arguments = []
+w = h = 600
+depth = 2
 
-if len(sys.argv) == 4:
-    w = h = int(sys.argv[1])
+
+if len(sys.argv) == 3:
+    depth = float(sys.argv[1])
     maxit = int(sys.argv[2]) 
-    argv_3 = int (sys.argv[3])
-    arguments = []
     file = open("old.txt", 'r')
     numbers = file.readlines()
     file.close()
@@ -26,7 +28,25 @@ if len(sys.argv) == 4:
     old_arguments[2] =  arguments[2]
     old_arguments[3] =  arguments[3]
 else:
-    w = h = 0
+    maxit = 0
+
+
+
+if len(sys.argv) == 4:
+    depth = float(sys.argv[1])
+    maxit = int(sys.argv[2]) 
+    argv_3 = int (sys.argv[3])
+    file = open("old.txt", 'r')
+    numbers = file.readlines()
+    file.close()
+    for i in range(len(numbers)):
+        arguments.append(float(numbers[i]))
+    
+    old_arguments[0] = arguments[0]
+    old_arguments[1] = arguments[1]
+    old_arguments[2] =  arguments[2]
+    old_arguments[3] =  arguments[3]
+else:
     maxit = 0
     argv_3 = 0
 
@@ -34,8 +54,8 @@ def mandelbrot(x,y,maxit):
     c=x+y*1j
     z=0+0j
     it=0
-    while abs(z) < 2.75 and it < maxit:
-        z = z**2+c
+    while abs(z) < 8.75 and it < maxit:
+        z = z**depth+c
         it+=1
     return it
 
@@ -63,7 +83,7 @@ elif argv_3 == 4:
 else:
     _x_and_y[0], _x_and_y[1] = -1.0, 1.0
     _x_and_y[2], _x_and_y[3] = -1.0, 1.0
-    w = h = 400
+    w = h = 600
     maxit = 100
 
 comm = MPI.COMM_WORLD
@@ -106,10 +126,6 @@ comm.Gatherv(sendbuf = [Cl, MPI.INT],
 
 rowtype.Free()
 
-if comm.rank == 0 :
-    import matplotlib.image as mtp
-    mtp.imsave('out.png',C)
-
 if len(sys.argv) == 4:
     arguments[0] = _x_and_y[0]
     arguments[1] = _x_and_y[1]
@@ -118,3 +134,8 @@ if len(sys.argv) == 4:
     with open('old.txt', 'w') as f:
         for k in range(len(arguments)):
             f.write(str(arguments[k])+'\n')
+if comm.rank == 0 :
+    import matplotlib.image as mtp
+    mtp.imsave('out.png',C)
+    print("Done::", end=" ")
+    print(*arguments, sep=" ")
